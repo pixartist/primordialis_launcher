@@ -7,7 +7,6 @@ const prompts = require('prompts');
 const APPDATA_PATH = process.env.APPDATA;
 const PRIMORDIALIS_DIR = path.join(APPDATA_PATH, 'Primordialis');
 const DEFAULT_SAVE_NAME = 'save';
-const GAME_EXE_PATH = 'E:\\SteamLibrary\\steamapps\\common\\Primordialis\\primordialis.exe';
 
 async function getSaveFolders() {
   try {
@@ -317,11 +316,19 @@ async function saveCurrent() {
 }
 
 async function main() {
+  const args = process.argv.slice(2);
+
+  if (args.length === 0) {
+    console.error('Usage: PrimordialisLauncher.exe <path-to-primordialis.exe>');
+    process.exit(1);
+  }
+
+  const exePath = args[0];
+
   try {
-    await fs.access(GAME_EXE_PATH);
+    await fs.access(exePath);
   } catch {
-    console.error(`Error: Game executable not found at: ${GAME_EXE_PATH}`);
-    console.error('Please update the GAME_EXE_PATH in launcher-exe.js');
+    console.error(`Error: Game executable not found at: ${exePath}`);
     process.exit(1);
   }
 
@@ -338,7 +345,7 @@ async function main() {
     }
 
     await manageSaveFolder(selectedSave);
-    await launchGame(GAME_EXE_PATH);
+    await launchGame(exePath);
 
     const hasWorldRun = await checkForWorldRun();
     if (!hasWorldRun) {

@@ -35,13 +35,26 @@ npm run build
 
 This will create `PrimordialisLauncher.exe` in the current directory.
 
-**Note**: The game path is hardcoded in `launcher-exe.js` as `E:\SteamLibrary\steamapps\common\Primordialis\primordialis.exe`. If your game is in a different location, edit this file before building.
-
 ## Usage
 
-### Using the Executable (Recommended)
+### Using with Steam (Recommended)
 
-Simply double-click `PrimordialisLauncher.exe` or add it as a non-Steam game in Steam.
+1. **Add as Non-Steam Game**:
+   - Open Steam
+   - Click **Games** in the top menu → **Add a Non-Steam Game to My Library**
+   - Click **Browse** and navigate to `PrimordialisLauncher.exe`
+   - Select it and click **Add Selected Programs**
+
+2. **Configure Launch Options**:
+   - Right-click the launcher in your Steam library → **Properties**
+   - In the **Launch Options** field, add the path to your Primordialis executable:
+     ```
+     "C:\Program Files (x86)\Steam\steamapps\common\Primordialis\primordialis.exe"
+     ```
+   - Note: Adjust the path to match your actual Primordialis installation location
+   - Use quotes around the path if it contains spaces
+
+3. **Launch**: Click **Play** in Steam to start the launcher
 
 ### Using Node.js Directly
 
@@ -49,6 +62,14 @@ Run the launcher with the path to your Primordialis executable:
 
 ```bash
 node launcher.js "C:\Path\To\Primordialis.exe"
+```
+
+### Using the Executable Standalone
+
+Run from command line:
+
+```bash
+PrimordialisLauncher.exe "C:\Path\To\Primordialis.exe"
 ```
 
 ### Workflow
