@@ -11,7 +11,7 @@ A Node.js wrapper for Primordialis that provides save game management functional
 - Prompts to save your game progress after exiting
 - Continuous loop for multiple play sessions
 
-## Installation
+## Manual building (not required if you download the .exe)
 
 1. Make sure you have Node.js installed
 2. Install dependencies:
