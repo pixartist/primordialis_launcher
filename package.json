@@ -1,0 +1,23 @@
+{
+  "name": "primordialis-launcher",
+  "version": "1.0.0",
+  "description": "Save manager and launcher for Primordialis game",
+  "main": "launcher.js",
+  "bin": "launcher-exe.cjs",
+  "scripts": {
+    "start": "node launcher.js",
+    "build": "pkg . --target node18-win-x64 --output PrimordialisLauncher.exe"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "type": "module",
+  "pkg": {
+    "scripts": "launcher-exe.cjs",
+    "assets": [],
+    "outputPath": "dist"
+  }
+}
